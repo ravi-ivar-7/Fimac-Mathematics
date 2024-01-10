@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Non-Linear and Transcendental Equations{% endblock title %}
+
+{% block mainbody %}
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="home">Homepage</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Solve Non-Linear and Transcendental
+                            Equations</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-12 text-center">
+                <h3 class="mb-4">Select Method </h3>
+                <hr>
+            </div>
+            <div class="col-lg-8 col-12 mt-3 mx-auto">
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">Newtons Raphson Method (with step-by-step solution)</h5>
+                                <p class="mb-0"> Find the roots of a given real-valued function f(x)=0 (Polynomial OR
+                                    Transcendental) as long as the function is continuous and differentiable in the
+                                    vicinity of the root being sought. </p>
+                                <a href="{% url 'newton_raphson_method' %}"
+                                    class="btn custom-btn mt-3 mt-lg-4">Solve</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-12 mt-3 mx-auto">
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">Bisection Method (with step-by-step solution)</h5>
+                                <p class="mb-0"> Find the roots of a given real-valued function f(x)=0 (Polynomial / Algebraic /
+                                    Transcendental) . </p>
+                                <a href="{% url 'bisection_method' %}"
+                                    class="btn custom-btn mt-3 mt-lg-4">Solve</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-12 mt-3 mx-auto">
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="d-flex">
+                        <div class="custom-block-topics-listing-info d-flex">
+                            <div>
+                                <h5 class="mb-2">Secant Method (with step-by-step solution)</h5>
+                                <p class="mb-0"> Find the roots of a given real-valued function f(x)=0 (Polynomial OR
+                                    Transcendental) as long as the function is continuous and differentiable in the
+                                    vicinity of the root being sought. </p>
+                                <a href="{% url 'secant_method'%}" class="btn custom-btn mt-3 mt-lg-4">Solve</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<hr>
+    </div>
+    </div>
+</section>
+
+{% endblock mainbody %}

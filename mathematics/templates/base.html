@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Ravi Kumar">
+    <title>Fimac &mdash; {% block title %} {% endblock title %}</title>
+    <meta name="description" content="Making Numerical Computation Easy ... ">
+    <!--<meta name="title" content="">-->
+    <link rel="shortcut icon" href="/static/images/fusion_logo_site.svg" type="image/svg+xml">
+
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionic/5.5.2/css/ionic.min.css">
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="/static/css/templatemo-topic-listing.css" rel="stylesheet">
+
+    <style>
+        #screen-message {
+          display: none;
+          background-color: #f0f0f0;
+          color: #333;
+          padding: 10px;
+          text-align: center;
+        }
+      
+        @media (max-width: 768px) {
+          #mobile-message {
+            display: block;
+          }
+        }
+      
+        .responsive-image {
+          width: 100%;
+          height: auto;
+        }
+      </style>
+      
+      <!--for collapse text-->
+      <style>
+        .collapsiblec {
+          background-color: #777;
+          color: white;
+          cursor: pointer;
+          padding: 18px;
+          width: 100%;
+          border: none;
+          text-align: center;
+          outline: none;
+          font-size: 20px;
+        }
+      
+        .activec,
+        .collapsiblec:hover {
+          background-color: #555;
+        }
+      
+        .contentc {
+          padding: 18px;
+          display: none;
+          overflow: hidden;
+          background-color: wheat;
+          font-size: 20px;
+        }
+      </style>
+      <!--for table-->
+      <style>
+         
+        .table-responsive {
+          overflow-x: auto;
+          max-width: 100%;
+        }
+      
+        table {
+          width: 100%; 
+          font-size: 20px;
+        }
+      
+        th, td {
+          padding: 20px;
+          text-align: left;
+        }
+      </style>
+
+</head>
+
+<body id="top">
+
+    <main>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="">
+                    <img src="/static/images/fusion_logo_footer.jpg" alt="">
+                    <span>FIMAC</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="/home"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="/home">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" id="shareButton" href='' >Share this page</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">Browse Topics</a>
+                          <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                            <li><a class="dropdown-item" href="/home#section_2">All</a></li>
+                              <li><a class="dropdown-item" href="{% url 'home_algebra' %}">Algebra</a></li>
+                              <li><a class="dropdown-item" href="{% url 'home_numerical_differentiation' %}">Num Differentiation</a></li>
+                              <li><a class="dropdown-item" href="{% url 'home_numerical_integration' %}">Num Integration</a></li>
+                              <li><a class="dropdown-item" href="{% url 'home_calculus' %}">Calculus</a></li>
+                          </ul> 
+                      </li>
+                       
+                  
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <!--<li><a class="dropdown-item" href="{% url 'credits' %}">Credits</a></li>-->
+                                <li><a class="dropdown-item" href="{% url 'report' %}">Report</a></li>
+                                <li><a class="dropdown-item" href="{% url 'feedback' %}">Feedback</a></li>
+                                <li><a class="dropdown-item" href="{% url 'about' %}">About</a></li>
+                            </ul>
+                        </li>
+
+                        <!--<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Links</a>
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                <li><a class="dropdown-item" href="https://github.com/ravi-ivar-7" target="_blank">Github</a></li>
+                                <li><a class="dropdown-item" href="https://www.linkedin.com/in/ravi-kumar-49019a25a" target="_blank">LinkedIn</a></li>
+                                <li><a class="dropdown-item" href="mailto:ravikumar117211@gmail.com" target="_blank">E-Mail</a></li>
+                            </ul>
+                        </li>-->
+
+                        <li class="nav-item">
+                            
+                            {% if user.is_authenticated%}
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
+                                  data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                              <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                  <li><a class="dropdown-item" onclick="confirmLogout()" >Logout<!--{{user.username}}--></a></li> 
+                              </ul>
+                          </li>
+
+                        
+                        {%else%}
+                        <li class="nav-link click-scroll">
+
+                            <a href="{%url 'login' %}?next=/home">Login</a>
+                        </li>
+                        {%endif%}
+                        </li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </nav>
+        {% block mainbody %}
+
+
+        {% endblock mainbody %}
+    </main>
+<hr>
+
+    {% include 'footer.html' %}
+    <!-- JAVASCRIPT FILES -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/jquery.sticky.js"></script>
+    <script src="/static/js/click-scroll.js"></script>
+    <script src="/static/js/custom.js"></script>
+    <!-- JAVASCRIPT FILES FOR SHARING -->
+    <script>
+        document.getElementById('shareButton').addEventListener('click', function() {
+          var urlToShare = window.location.href;
+
+          var tempInput = document.createElement('input');
+          tempInput.value = urlToShare;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+      
+          alert('Page link ( '+ urlToShare+' ) copied to clipboard: ');
+        });
+      </script>
+
+      <!-- script for collapse text -->
+<script>
+    var coll = document.getElementsByClassName("collapsiblec");
+    var i;
+  
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function () {
+        this.classList.toggle("activec");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
+  <!--for logout confirmation-->
+  <script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout?");
+        if (confirmLogout) {
+            window.location.href = "{% url 'logout' %}";
+        }
+    }
+</script>
+</body>
+</html>

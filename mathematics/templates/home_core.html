@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+{% block title %}Mathematics{% endblock title %}
+
+{% block mainbody %}
+
+<section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 col-12 mx-auto">
+                <h1 class="text-white text-center"> Mathematics</h1>
+                <h6 class="text-center"></h6>
+
+         
+
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+    </strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+</div>
+
+<section class="explore-section section-padding" id="section_2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="mb-4">Browse Topics</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel"
+                        aria-labelledby="design-tab" tabindex="0">
+                        <div class="row">
+
+                            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="{% url 'home_algebra' %}">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h5 class="mb-2">Algebra</h5>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                        <img src="static/images/topics_img/equation.jpg"
+                                            class="custom-block-image img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="{% url 'home_numerical_differentiation'%}">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h5 class="mb-2">Numerical Differentiation</h5>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                        <img src="static/images/topics_img/num_diff.jpg"
+                                            class="custom-block-image img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="{% url 'home_numerical_integration'%}">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h5 class="mb-2">Numerical Integration</h5>
+
+                                                <p class="mb-0"></p>
+                                            </div>
+
+
+                                        </div>
+
+                                        <img src="static/images/topics_img/num_int.jpeg"
+                                            class="custom-block-image img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="explore-section section-padding" id="section_2">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel"
+                        aria-labelledby="design-tab" tabindex="0">
+                        <div class="row">
+
+                            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                <div class="custom-block bg-white shadow-lg">
+                                    <a href="{% url 'home_calculus'%}">
+                                        <div class="d-flex">
+                                            <div>
+                                                <h5 class="mb-2">Calculus (integration,...)</h5>
+                                                <p class="mb-0"></p>
+                                            </div>
+                                        </div>
+                                        <img src="static/images/topics_img/integration.jpg"
+                                            class="custom-block-image img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+</main>
+
+
+<!-- script for collapse text -->
+<script>
+    var coll = document.getElementsByClassName("collapsiblec");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("activec");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
+{% endblock mainbody %}

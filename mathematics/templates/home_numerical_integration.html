@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Numerical Integration{% endblock title %}
+
+{% block mainbody %}
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="home">Homepage</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Numerical Integration</li>
+                    </ol>
+                </nav>         
+            </div>
+        </div>
+    </div>
+</header>
+            <section class="section-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-12 text-center">
+                            <h3 class="mb-4">Select a Method </h3>
+                        </div> <hr>
+                        <div class="col-lg-8 col-12 mt-3 mx-auto">
+                            <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                                <div class="d-flex">
+                                    <div class="custom-block-topics-listing-info d-flex">
+                                        <div>
+                                            <h5 class="mb-2">Trapezoidal Rule for Numerical Integration</h5>
+                                            <p class="mb-0">For a continuous functions. Discontinuous or oscillatory functions may not yield accurate results. </p>
+                                            <a href="{% url 'trapezoidal_method' %}" class="btn custom-btn mt-3 mt-lg-4">Solve</a>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12 mt-3 mx-auto">
+                            <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                                <div class="d-flex">
+                                    <div class="custom-block-topics-listing-info d-flex">
+                                        <div>
+                                            <h5 class="mb-2">Simpson's 1/3 Rule for Numerical Integration</h5>
+                                            <p class="mb-0">For a continuous functions. Discontinuous or oscillatory functions may not yield accurate results.</p>
+                                            <a href="{% url 'simpson_3_method' %}" class="btn custom-btn mt-3 mt-lg-4">Solve</a>
+                                        </div>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div> 
+<hr>
+                    </div>
+                </div>
+            </section>
+        {% endblock mainbody %}
+	
+       

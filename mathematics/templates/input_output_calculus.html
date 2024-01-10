@@ -1,0 +1,297 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock title %}
+{% block mainbody %}
+
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-lg-5 col-12 mb-5">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="home">Homepage</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{topic_name}}</li>
+          </ol>
+        </nav>
+        <h2 class="text-white">{{method_name}} </h2>
+      </div>
+    </div>
+  </div>
+</header>
+{% if messages %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+    </strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+<div class="text-center">
+  <button type="button" class="btn btn-danger">
+    <a href="{% url 'report' %}" class="text-white">Report incorrect solution/information</a>
+  </button>
+</div>
+
+<section class="topics-detail-section section-padding" style="padding: 5px;">
+  <div class="container">
+
+    <!-- General information -->
+    {%if how_to_input%}
+    <div class="theory">
+      <button type="button" class="collapsiblec" id="how_to_input">How To Give Input? &varr;</button>
+      <div class="contentc">
+        <p>
+          {%for input in how_to_input%}
+          {%if input.link%}
+          <img src="{{input.link}}" alt="" class="responsive-image">
+          <hr>
+          {%else%}
+          {{input}}
+          <hr>
+          {%endif%}
+          {% endfor %}
+        </p>
+      </div>
+    </div><br>
+    {%endif%}
+
+    <!--if we need to pass any extra info-->
+    {%if information%}
+    <div class="theory">
+      <button type="button" class="collapsiblec" id="" >{{information.0}}&varr;</button>
+      <div class="contentc">
+        <p>
+          {%for info in information%}
+          {%if info.link%}
+          <img src="{{info.link}}" alt="" class="responsive-image">
+          <hr>
+          {%else%}
+          {{info}}
+          <hr>
+          {%endif%}
+          {% endfor %}
+        </p>
+      </div>
+    </div><br>
+    {%endif%}
+
+
+    {%if method_theory%}
+    <div class="theory">
+      <button type="button" class="collapsiblec" id="method_theory">Theory Related To Method &varr;</button>
+      <div class="contentc">
+        <p>
+          {%for theory in method_theory%}
+          {%if theory.link%}
+          <img src="{{theory.link}}" alt="" class="responsive-image">
+          <hr>
+          {%else%}
+          {{theory}}
+          <hr>
+          {%endif%}
+          {% endfor %}
+        </p>
+      </div>
+    </div>
+    {%endif%}
+    <hr>
+    <div class="row">
+      <div class="col-lg-12 col-12 m-auto">
+        <form action="" , method="POST">
+          {% csrf_token %}
+          <!-- output -->
+          {%if screen_info%}
+          <div id="screen-message">
+            <p>{{screen_info}}</p>
+          </div>
+          <br>
+          {%endif%}
+
+          <p><b>{{info}}</p>
+
+          {%if input_error%}<br>
+          <p>{{input_error}} </p>
+          <a href="#how_to_input">Please see <b>'How To Give Input?'</b></a>
+          {%endif%}
+
+          <p>{{timeout_error}}</p>
+
+          <div>
+            <h4>{{fun}}</h4>
+          </div>
+          <br>
+
+          {%if detail_solution%}
+          <div class="detail_solution">
+            <button type="button" class="collapsiblec" id="detail_solution" >Detail Solution &varr;</button>
+            <div class="contentc">
+              <p>
+                {%for row in detail_solution%}
+                {%for col in row%}
+                {%if col.link%}
+                <img src="{{col.link}}" alt="" class="responsive-image">
+                <hr>
+                {%else%}
+                {{col}}
+                {%endif%}
+                {% endfor %}
+                <hr>
+                {%endfor%}
+              </p>
+            </div>
+          </div>
+          <br>
+          {%endif%}
+
+          {%if plot%}
+          <h5>Output Plot:</h5>
+          <p><b>{{plot_info}}</p>
+          <div>{{ plot | safe }}</div>
+          <br>
+          {%endif%}
+
+          {%if table_output%}
+          <h5>Output :</h5>
+          <p><b>{{table_output_info}}</p>
+          <div class='table-responsive'>
+            <table class="table table-striped table-dark">
+              <thead>
+                <tr>
+                
+                  {% for heading in headings %}
+                  <th scope="col">{{heading}}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in table_output %}
+                <tr>
+                 
+                  {% for column in row %}
+                  <td>{{column}}</td>
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <hr>
+          {%endif%}
+
+          <!-- Input -->
+          <h5>Input Fields :</h5>
+          <p><b>{{input_info}}</p>
+          {%if function %}
+          <div class="form-group ">
+            <label for="function">{{function}}</label>
+            <input type="function" class="form-control" id="function" name="function" required>
+          </div><br>
+          {%endif%}
+
+          {%if function_prime %}
+          <div class="form-group ">
+            <label for="function_prime">{{function_prime}}</label>
+            <input type="function_prime" class="form-control" id="function_prime" name="function_prime" required>
+          </div><br>
+          {%endif%}
+
+          {%if initial_x %}
+          <div class="form-group">
+            <label for="initial_x">{{initial_x}}</label>
+            <input type="number " class="form-control" id="initial_x" name='initial_x' required>
+          </div><br>
+          {%endif%}
+
+          {%if final_x %}
+          <div class="form-group">
+            <label for="final_x">{{final_x}}</label>
+            <input type="number " class="form-control" id="final_x" name='final_x' required>
+          </div><br>
+          {%endif%}
+
+          {%if initial_y%}
+          <div class="form-group">
+            <label for="initial_y" name="initial_y">{{initial_y}}</label>
+            <input type="number " class="form-control" id="initial_y" name='initial_y' required>
+          </div><br>
+          {%endif%}
+
+          {%if final_y%}
+          <div class="form-group">
+            <label for="final_y" name="final_y">{{final_y}}</label>
+            <input type="number " class="form-control" id="final_y" name='final_y' required>
+          </div> <br>
+          {%endif%}
+
+          {%if target_x %}
+          <div class="form-group">
+            <label for="target_x">{{target_x}}</label>
+            <input type="number " class="form-control" id="target_x" name='target_x' required>
+          </div><br>
+          {%endif%}
+
+          {%if w_r_t %}
+          <div class="form-group ">
+            <label for="w_r_t">{{w_r_t}} </label>
+            <input type="w_r_t" class="form-control" id="w_r_t" name="w_r_t" value='x' required>
+          </div><br>
+          {%endif%}
+
+          {%if no_of_segment%}
+          <div class="form-group">
+            <label for="no_of_segment">{{no_of_segment}}</label>
+            <style>
+              input[type=number]::-webkit-inner-spin-button {
+                opacity: 1
+              }
+            </style>
+            <input type="number" class="form-control" id="no_of_segment" name='no_of_segment' value="5" min="1" max="100"
+              required>
+          </div><br>
+          {%endif%}
+
+          {%if step_size%}
+          <div class="form-group">
+            <label for="step_size">{{step_size}}</label>
+            <input type="number " class="form-control" id="step_size" name='step_size' required>
+          </div><br>
+          {%endif%}
+
+          {%if iterations%}
+          <div class="form-group">
+            <label for="iterations">{{iterations}}</label>
+            <style>
+              input[type=number]::-webkit-inner-spin-button {
+                opacity: 1
+              }
+            </style>
+            <input type="number" class="form-control" id="iterations" name='iterations' value="5" min="1" max="100"
+              required>
+          </div><br>
+          {%endif%}
+
+          {%if accuracy%}
+          <div class="form-group">
+            <label for="accuracy">{{accuracy}}</label>
+            <style>
+              input[type=number]::-webkit-inner-spin-button {
+                opacity: 1
+              }
+            </style>
+            <input type="number" class="form-control" id="accuracy" name='accuracy' value="5" min="1" max="10" required>
+          </div><br>
+          {%endif%}
+
+          <button type="submit" class="btn btn-outline-primary">Submit</button>
+         
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock mainbody %}

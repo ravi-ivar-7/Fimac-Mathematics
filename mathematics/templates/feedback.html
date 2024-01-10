@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block title %}Mathematics{% endblock title %}
+
+{% block mainbody %}
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="home">Homepage</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Feedback </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+{% if messages %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+    </strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+
+<!-- <div class="tabs-panel" id="feedback" style="background-color: antiquewhite;"> -->
+    <div class="report" style="background-color:wheat; padding: 10px;">
+    <div class="formbold-main-wrapper">
+        <div class="formbold-form-wrapper">
+            <form action="/feedback" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!--
+          <div class="formbold-input-flex">
+            <div>
+              <label for="name" class="formbold-form-label"> Name</label>
+              <input type="text" name="name" id="name" class="formbold-form-input" />
+            </div>
+            <div>
+              <label for="email" class="formbold-form-label"> E-mail </label>
+              <input type="email" name="email" id="email" class="formbold-form-input" />
+            </div>
+          </div>-->
+
+                <!-- questions starts -->
+<hr>
+                <div class="formbold-input-radio-wrapper">
+                    <label required for="" class="formbold-form-label">Are you satisfied with output of these numerical
+                        methods?</label>
+                    <div class="formbold-radio-flex">
+                        <div class="formbold-radio-group">
+                            <input type="radio" id="feedbacka1" name="feedback1" value="Yes" required>
+                            <label for="feedbacka1">Yes</label> <br>
+                            <input type="radio" id="feedbacka2" name="feedback1" value="Need improvement">
+                            <label for="feedbacka2">Need improvement </label> <br>
+                            <input type="radio" id="feedbacka3" name="feedback1"
+                                value="Not interested in these numerical methods">
+                            <label for="feedbacka3"> Not interested in these numerical methods!</label> <br>
+                        </div>
+                    </div>
+<hr>
+                    <label for="" class="formbold-form-label">Rate your experience on using this website.</label>
+                    <div class="formbold-radio-flex" >
+                        <div class="formbold-radio-group">
+                            <input type="radio" id="feedbackb1" name="feedback2" value="Excellent" required>
+                            <label for="feedbackb1">Excellent</label> <br>
+                            <input type="radio" id="feedbackb2" name="feedback2" value="Good">
+                            <label for="feedbackb2">Good </label> <br>
+                            <input type="radio" id="feedbackb4" name="feedback2" value="Poor">
+                            <label for="feedbackb4">Poor</label> <br>
+                        </div>
+                    </div>
+                </div>
+                
+<hr>
+                <div>
+                    <label for="improveexperience" class="formbold-form-label"> How can this website be improved in terms of its
+                        design and result-display of numericals method?</label>
+                    <input type="text" name="improveexperience" id="improveexperience" class="formbold-form-input" />
+                </div>
+<hr>
+                <div>
+                    <label for="firstimpression" class="formbold-form-label"> What was your first impression when you
+                        used this website?</label>
+                    <input type="text" name="firstimpression" id="firstimpression" class="formbold-form-input" />
+                </div>
+                <!-- questions end -->
+<hr>
+                <div>
+                    <label for="message" class="formbold-form-label"></label>
+                    <textarea rows="6" style="width: 90vw;" name="message" id="message" placeholder="Anything you want to say!"
+                        class="formbold-form-input"></textarea>
+                </div>
+<hr>
+                <div>
+                    <label for="links" class="formbold-form-label">Any References/Links</label>
+                    <input type="text" name="links" id="links" class="formbold-form-input" />
+                </div>
+<hr>
+                <!--
+          <div class="formbold-input-flex">
+            <div>
+              <label for="formFileMultiple" class="form-label">Upload file</label>
+              <input class="form-control" type="file" id="formFileMultiple" multiple name="feedbackfile">
+            </div>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkbox" required>
+            <label class="form-check-label" for="checkbox">
+              No personal information and agree to terms.
+            </label>
+          </div>-->
+          <button  class="btn btn-primary btn-block mb-4" type="submit" style="border:black solid;">
+            Send Feedback
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock mainbody %}
